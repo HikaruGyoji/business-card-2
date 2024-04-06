@@ -1,0 +1,151 @@
+.wrapper {
+  position: relative;
+}
+
+.toggle {
+  z-index: 1000;
+  border-radius: 5px;
+}
+
+.toggle {
+  margin-top: 70px;
+  background-color: #3498db;
+  color: #fff;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.toggle:hover {
+  background-color: #24618a;
+  transform: scale(1.2);
+}
+
+.card-wrapper:hover {
+  transform: rotateX(var(--rx)) rotateY(var(--ry));
+  translate: calc((var(--ratiox) - 0.5) * -5%) calc((var(--ratioy) - 0.5) * -5%);
+}
+
+.card-wrapper:hover > .highlight {
+  background: radial-gradient(
+    circle at var(--mx) var(--my),
+    rgba(255, 255, 255, 0.8) 10%,
+    rgba(255, 255, 255, 0.65) 20%,
+    rgba(0, 0, 0, 0.5) 90%
+  );
+  mix-blend-mode: overlay;
+}
+
+.card-wrapper-ura:hover {
+  transform: rotateX(var(--rux)) rotateY(var(--ruy));
+  translate: calc((var(--ratioux) - 0.5) * -5%)
+    calc((var(--ratiouy) - 0.5) * -5%);
+}
+
+.card-wrapper-ura:hover > .highlight {
+  background: radial-gradient(
+    circle at var(--mux) var(--muy),
+    rgba(255, 255, 255, 0.8) 10%,
+    rgba(255, 255, 255, 0.65) 20%,
+    rgba(0, 0, 0, 0.5) 90%
+  );
+  mix-blend-mode: overlay;
+}
+
+.color {
+  mix-blend-mode: color-dodge;
+  display: grid;
+}
+
+.card-wrapper:hover > .color {
+  background-blend-mode: color-burn, screen, soft-light;
+  background-size: 60% 30%, 1100% 1100%, 600% 600%, 200% 200%;
+  background-position: center, 0% var(--posy), var(--posx) var(--posy),
+    var(--posx) var(--posy);
+  filter: brightness(calc((var(--hyp) * 0.3) + 0.5)) contrast(2.5) saturate(0.6);
+}
+
+.card-wrapper-ura:hover > .color {
+  background-blend-mode: color-burn, screen, soft-light;
+  background-size: 60% 30%, 1100% 1100%, 600% 600%, 200% 200%;
+  background-position: center, 0% var(--posuy), var(--posux) var(--pouy),
+    var(--posux) var(--posuy);
+  filter: brightness(calc((var(--huyp) * 0.3) + 0.5)) contrast(2.5)
+    saturate(0.6);
+}
+
+/*形を整える*/
+.card {
+  box-shadow: 0 10px 20px -5px #000;
+  height: 300px;
+  position: absolute;
+  width: 100%;
+  overflow: hidden;
+}
+
+.card-wrapper {
+  aspect-ratio: 0.716;
+  display: grid;
+  height: calc(100% - 32px);
+  max-width: 100%;
+  position: absolute;
+}
+
+.card-wrapper-ura {
+  aspect-ratio: 0.716;
+  display: none;
+  height: calc(100% - 32px);
+  max-width: 100%;
+  position: absolute;
+}
+
+/*真ん中に持ってきている*/
+body {
+  background-color: #212529;
+  display: grid;
+  height: calc(100vh - 32px);
+  margin: 0;
+  padding: 16px;
+  place-items: center;
+  position: relative;
+  width: calc(100% - 32px);
+}
+
+.arrow-wrapper {
+  display: none;
+}
+
+@media (max-width: 750px) {
+  body {
+    margin: 0 auto;
+    padding: 100px 0;
+  }
+  .card-wrapper,
+  .card-wrapper-ura {
+    position: relative;
+  }
+  .card {
+    width: 100%;
+    height: 220px;
+  }
+  .toggle {
+    top: 330px;
+    position: absolute;
+  }
+  .arrow-wrapper {
+    font-size: 24px;
+    color: white;
+    top: 40px;
+    left: 0;
+    display: flex;
+    position: absolute;
+    gap: 20px;
+    flex-direction: column;
+  }
+  i {
+    transform: rotate(135deg) scale(1, 1);
+  }
+}
